@@ -5,7 +5,11 @@ import Login from '@/views/login/' // 登录页面
 import Home from '@/views/home' // 首页
 import Article from '@/views/article' // 文章列表
 import Publish from '@/views/publish' // 发布文章
-import Nprogress from 'nprogress'
+import Comment from '@/views/comment' // 评论列表
+import CommentDetail from '@/views/comment-detail' // 修改评论
+import ImgManag from '@/views/imgManagement'
+import User from '@/views/user' // 用户管理
+import Nprogress from 'nprogress' // 引入进度条
 
 Vue.use(VueRouter)
 
@@ -32,6 +36,28 @@ const routes = [
       {
         path: '/publish',
         component: Publish
+      },
+      {
+        path: '/publish/:articleId',
+        component: Publish
+
+      },
+      {
+        path: '/comment',
+        component: Comment
+      },
+      {
+        path: '/comment/:articleId',
+        component: CommentDetail,
+        props: true
+      },
+      {
+        path: '/imgManagement',
+        component: ImgManag
+      },
+      {
+        path: '/user',
+        component: User
       }
     ]
 

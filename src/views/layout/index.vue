@@ -15,9 +15,9 @@
         <el-submenu index="1">
           <template slot="title"><i class="el-icon-lollipop"></i>内容管理</template>
           <el-menu-item index="/publish"><i class="el-icon-ship"></i> 发布文章</el-menu-item>
-          <el-menu-item index="article"><i class="el-icon-dish-1"></i>内容列表</el-menu-item>
-          <el-menu-item index=""><i class="el-icon-dish"></i>评论列表</el-menu-item>
-          <el-menu-item index=""><i class="el-icon-chicken"></i>素材管理</el-menu-item>
+          <el-menu-item index="/article"><i class="el-icon-dish-1"></i>内容列表</el-menu-item>
+          <el-menu-item index="/comment"><i class="el-icon-dish"></i>评论列表</el-menu-item>
+          <el-menu-item index="/imgManagement"><i class="el-icon-chicken"></i>素材管理</el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title"><i class="el-icon-cold-drink"></i>粉丝管理</template>
@@ -26,6 +26,7 @@
           <el-menu-item index=""><i class="el-icon-goblet"></i>粉丝画像</el-menu-item>
           <el-menu-item index=""><i class="el-icon-grape"></i>粉丝列表</el-menu-item>
         </el-submenu>
+        <el-menu-item index="/user"><i class="el-icon-milk-tea"></i>用户管理</el-menu-item>
       </el-menu>
     </el-aside>
 
@@ -39,7 +40,7 @@
       <!-- 主页 -->
       <el-main>
         <!-- 二级容器 -->
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -51,7 +52,7 @@ import layoutHeader from '../../components/layout-header.vue'
 export default {
   name: 'layout',
   components: {
-    'layout-header': layoutHeader
+    'layout-header': layoutHeader // 也可以这样写layoutHeader
   }
 
 }

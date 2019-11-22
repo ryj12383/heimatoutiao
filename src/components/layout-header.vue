@@ -5,10 +5,10 @@
         <i class="el-icon-s-fold"></i>
         <span>江苏传智播客教育科技股份有限公司</span>
       </el-col>
-      <el-col :span="3" class="right">
-        <img src="../assets/img/avatar.jpg" alt />
+      <el-col :span="3" class="right" v-model="user">
+        <img :src="user.photo" width="50px" height="50px" />
         <el-dropdown trigger="click">
-          <span>水若寒宇</span>
+          <span> {{ user.name}}</span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>账户信息</el-dropdown-item>
             <el-dropdown-item>git地址</el-dropdown-item>
@@ -21,8 +21,37 @@
 </template>
 
 <script>
+import eventBus from '@/until/event-bus'
 export default {
+  name: 'userheader',
+  data () {
+    return {
+      user: {
+        name: '',
+        photo: ''
+      }
+    }
+  },
+  created () {
+    this.loadUser()
+    eventBus.$on('updata-user', user => {
+      this.user.photo = user.photo
+      this.user.name = user.name
+    })
+  },
   methods: {
+    // 显示用户基本信息
+    loadUser () {
+      this.$axios({
+        method: 'GET',
+        url: 'user/profile'
+      }).then(res => {
+        this.user = res.data.data
+      }).catch(res => {
+        // console.log(res)
+      })
+    },
+    // 退出程序
     onloginOut () {
       this.$confirm('此操作将退出程序, 是否继续?', '提示', {
         confirmButtonText: '确定',

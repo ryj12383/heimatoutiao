@@ -7,9 +7,9 @@
         <img src="../../assets/img/logo_index.png" alt />
       </div>
       <!-- 表单 -->
-      <el-form style="margin-top:30px" ref="loginObj" :model="loginForm" :rules="loginRules">
-        <el-form-item prop="mobile">
-          <el-input placeholder="请输入你的电话号码"  v-model="loginForm.mobile"></el-input>
+      <el-form style="margin-top:30px" ref="loginObj" :model="loginForm" :rules="loginRules" status-icon >
+        <el-form-item prop="mobile" >
+          <el-input placeholder="请输入你的电话号码"  v-model="loginForm.mobile" ></el-input>
         </el-form-item>
         <el-form-item prop="code">
           <el-input placeholder="请输入你的验证码" style="width:65%" v-model="loginForm.code"></el-input>
